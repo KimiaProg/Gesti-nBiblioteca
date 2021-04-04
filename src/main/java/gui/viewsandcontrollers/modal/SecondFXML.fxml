@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="318.0" prefWidth="391.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.viewsandcontrollers.modal.ControllerSecond">
+   <children>
+      <AnchorPane layoutY="9.0" minHeight="0.0" minWidth="0.0" prefHeight="217.0" prefWidth="391.0">
+         <children>
+            <Text layoutX="99.0" layoutY="12.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PopUp" wrappingWidth="64.7294921875" />
+         </children>
+      </AnchorPane>
+      <BorderPane layoutX="-82.0" layoutY="371.0" prefHeight="46.0" prefWidth="200.0" />
+      <Pane layoutY="209.0" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Button layoutX="155.0" layoutY="58.0" mnemonicParsing="false" text="Cerrar" onAction="#cerrarVentana" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
