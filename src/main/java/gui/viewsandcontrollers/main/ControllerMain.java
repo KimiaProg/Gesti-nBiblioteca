@@ -26,22 +26,29 @@ public class ControllerMain {
 	private static ObservableList<Libro> catalogo= FXCollections.observableArrayList() ;
 
 	@FXML
-	TableView table;
+	TableView<Libro> table;
 
 	@FXML
-	TableColumn titulo;
+	TableColumn<Libro, String> titulo;
 	@FXML
-	TableColumn isbn;
+	TableColumn<Libro, String> isbn;
 	@FXML
-	TableColumn autor;
+	TableColumn<Libro, String> autor;
 	@FXML
-	TableColumn genero;
+	TableColumn<Libro, Genero> genero;
 	@FXML
-	TableColumn paginas;
+	TableColumn<Libro, Integer>  paginas;
 
 	@FXML
 	public void initialize() {
-		// TODO
+		titulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
+		isbn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
+		autor.setCellValueFactory(new PropertyValueFactory<>("autor"));
+		genero.setCellValueFactory(new PropertyValueFactory<>("genero"));
+		paginas.setCellValueFactory(new PropertyValueFactory<>("paginas"));
+		
+		table.setItems(catalogo);
+		table.getColumns().addAll(titulo, isbn,autor,genero,paginas);
 	}
 
 	@FXML
@@ -56,13 +63,6 @@ public class ControllerMain {
 		dialog.initOwner(parent);
 		dialog.initModality(Modality.APPLICATION_MODAL);
 		dialog.showAndWait();
-		titulo.setCellValueFactory(new PropertyValueFactory<Libro, String>("titulo"));
-		isbn.setCellValueFactory(new PropertyValueFactory<Libro, String>("isbn"));
-		autor.setCellValueFactory(new PropertyValueFactory<Libro, String>("autor"));
-		genero.setCellValueFactory(new PropertyValueFactory<Libro, Genero>("genero"));
-		paginas.setCellValueFactory(new PropertyValueFactory<Libro, Integer>("paginas"));
-		
-		table.setItems(catalogo);
 	}
 
 	@FXML
@@ -82,7 +82,11 @@ public class ControllerMain {
 
 	@FXML
 	private void cargar(ActionEvent event) throws IOException {
-
+		for(int i =0; i<catalogo.size()-1;i++) {
+			table.getItems().add(catalogo.get(i));
+		}
+		
+		
 	}
 
 	public static ObservableList<Libro> getCatalogo() {
