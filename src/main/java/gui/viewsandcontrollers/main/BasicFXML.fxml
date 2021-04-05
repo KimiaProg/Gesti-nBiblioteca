@@ -12,11 +12,11 @@
       <TableView layoutY="82.0" prefHeight="239.0" prefWidth="553.0">
         <columns>
             <TableColumn minWidth="0.0" prefWidth="0.0" text="Column X" />
-            <TableColumn prefWidth="197.0" text="Título" />
-            <TableColumn prefWidth="77.0" text="ISBN" />
-            <TableColumn prefWidth="90.0" text="Autor" />
-            <TableColumn prefWidth="98.0" text="Género" />
-            <TableColumn prefWidth="90.0" text="Páginas" />
+            <TableColumn fx:id="titulo" prefWidth="197.0" text="Título" />
+            <TableColumn fx:id="isbn" prefWidth="77.0" text="ISBN" />
+            <TableColumn fx:id="autor" prefWidth="90.0" text="Autor" />
+            <TableColumn fx:id="genero" prefWidth="98.0" text="Género" />
+            <TableColumn fx:id="paginas" prefWidth="90.0" text="Páginas" />
         </columns>
       </TableView>
       <Text layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestión de Biblioteca" textAlignment="CENTER" wrappingWidth="553.0">

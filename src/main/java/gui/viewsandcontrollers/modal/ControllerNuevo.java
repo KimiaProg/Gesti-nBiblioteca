@@ -32,12 +32,20 @@ public class ControllerNuevo {
 		Node source = (Node) event.getSource();
 	    Stage stage = (Stage) source.getScene().getWindow();
 	    String titulo = textTitulo.getText();
-	    String isbn = textTitulo.getText();
-	    String autor = textTitulo.getText();
-	    Genero genero = Genero.getGenero(textTitulo.getText());
-	    int paginas = Integer.parseInt(textTitulo.getText());
+	    String isbn = textISBN.getText();
+	    String autor = textAutor.getText();
+	    Genero genero = Genero.getGenero(textGenero.getText());
+	    int paginas = Integer.parseInt(textPaginas.getText());
 	    Libro nuevoLibro= new Libro(titulo, isbn, genero, autor, paginas);
+	    stage.close();
 	    ControllerMain.getCatalogo().add(nuevoLibro);
+	    
+	}
+	
+	@FXML
+	private void cancelar(ActionEvent event) throws IOException {
+		Node source = (Node) event.getSource();
+	    Stage stage = (Stage) source.getScene().getWindow();
 	    stage.close();
 	}
 
