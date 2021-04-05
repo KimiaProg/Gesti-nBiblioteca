@@ -8,5 +8,5 @@
  */
 
 def prefixUsername = "KEhsani"
-def projectName = "-PF13-JFX-BUSCAMINAS"
+def projectName = "GBiblioteca"
 rootProject.name = prefixUsername + projectName

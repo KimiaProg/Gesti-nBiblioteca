@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.viewsandcontrollers.main.ControllerMain">
+<AnchorPane id="AnchorPane" prefHeight="363.0" prefWidth="553.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.viewsandcontrollers.main.ControllerMain">
     <children>
-        <Button layoutX="95.0" layoutY="122.0" onAction="#handleButtonAction" text="To see the fruit" />
-        <Label layoutX="43.0" layoutY="40.0" minHeight="16" minWidth="42.0" prefHeight="26.0" prefWidth="42.0" text="Fruit" />
-	    <TextField fx:id="text" layoutX="85.0" layoutY="40.0" prefHeight="16.0" prefWidth="97.0" />
+      <TableView layoutY="82.0" prefHeight="239.0" prefWidth="553.0">
+        <columns>
+            <TableColumn minWidth="0.0" prefWidth="0.0" text="Column X" />
+            <TableColumn prefWidth="197.0" text="Título" />
+            <TableColumn prefWidth="77.0" text="ISBN" />
+            <TableColumn prefWidth="90.0" text="Autor" />
+            <TableColumn prefWidth="98.0" text="Género" />
+            <TableColumn prefWidth="90.0" text="Páginas" />
+        </columns>
+      </TableView>
+      <Text layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestión de Biblioteca" textAlignment="CENTER" wrappingWidth="553.0">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Text>
+      <Button layoutX="82.0" layoutY="329.0" mnemonicParsing="false" onAction="#nuevo" text="Nuevo" />
+      <Button layoutX="152.0" layoutY="329.0" mnemonicParsing="false" onAction="#editar" text="Editar" />
+      <Button layoutX="220.0" layoutY="329.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" />
+      <Button layoutX="299.0" layoutY="329.0" mnemonicParsing="false" onAction="#salvar" text="Salvar XML" />
+      <Button layoutX="398.0" layoutY="329.0" mnemonicParsing="false" onAction="#cargar" text="Cargar XML" />
     </children>
 </AnchorPane>
