@@ -39,7 +39,7 @@ public class ControllerNuevo {
 	    Libro nuevoLibro= new Libro(titulo, isbn, genero, autor, paginas);
 	    stage.close();
 	    ControllerMain.getCatalogo().add(nuevoLibro);
-	    //System.out.println(ControllerMain.getCatalogo().get(0).toString());
+	    System.out.println(ControllerMain.getCatalogo().get(0).toString());
 	    
 	}
 	
@@ -50,4 +50,20 @@ public class ControllerNuevo {
 	    stage.close();
 	}
 
+	
+	
+	
+	
+	
+	/*
+	 * if (table != null) {
+			if (table.getSelectionModel().getSelectedItem() != null) {
+				botonEliminar.setDisable(false);
+				botonEditar.setDisable(false);
+			} else {
+				botonEliminar.setDisable(true);
+				botonEditar.setDisable(true);
+			}
+		}*/
+	 
 }

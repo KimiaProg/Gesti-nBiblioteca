@@ -9,9 +9,8 @@
 
 <AnchorPane id="AnchorPane" prefHeight="363.0" prefWidth="553.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.viewsandcontrollers.main.ControllerMain">
     <children>
-      <TableView layoutY="82.0" prefHeight="239.0" prefWidth="553.0">
+      <TableView editable="true" layoutY="82.0" prefHeight="239.0" prefWidth="553.0">
         <columns>
-            <TableColumn minWidth="0.0" prefWidth="0.0" text="Column X" />
             <TableColumn fx:id="titulo" prefWidth="197.0" text="Título" />
             <TableColumn fx:id="isbn" prefWidth="77.0" text="ISBN" />
             <TableColumn fx:id="autor" prefWidth="90.0" text="Autor" />
@@ -25,8 +24,8 @@
          </font>
       </Text>
       <Button layoutX="82.0" layoutY="329.0" mnemonicParsing="false" onAction="#nuevo" text="Nuevo" />
-      <Button layoutX="152.0" layoutY="329.0" mnemonicParsing="false" onAction="#editar" text="Editar" />
-      <Button layoutX="220.0" layoutY="329.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" />
+      <Button fx:id="botonEditar" disable="true" layoutX="152.0" layoutY="329.0" mnemonicParsing="false" onAction="#editar" text="Editar" />
+      <Button fx:id="botonEliminar" disable="true" layoutX="220.0" layoutY="329.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" />
       <Button layoutX="299.0" layoutY="329.0" mnemonicParsing="false" onAction="#salvar" text="Salvar XML" />
       <Button layoutX="398.0" layoutY="329.0" mnemonicParsing="false" onAction="#cargar" text="Cargar XML" />
     </children>

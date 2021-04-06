@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -23,10 +24,15 @@ import javafx.stage.Window;
 
 public class ControllerMain {
 
-	private static ObservableList<Libro> catalogo= FXCollections.observableArrayList() ;
+	private static ObservableList<Libro> catalogo = FXCollections.observableArrayList();
 
 	@FXML
 	TableView<Libro> table;
+
+	@FXML
+	Button botonEliminar;
+	@FXML
+	Button botonEditar;
 
 	@FXML
 	TableColumn<Libro, String> titulo;
@@ -37,25 +43,32 @@ public class ControllerMain {
 	@FXML
 	TableColumn<Libro, Genero> genero;
 	@FXML
-	TableColumn<Libro, Integer>  paginas;
+	TableColumn<Libro, Integer> paginas;
 
 	@FXML
 	public void initialize() {
-		titulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
-		isbn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
-		autor.setCellValueFactory(new PropertyValueFactory<>("autor"));
-		genero.setCellValueFactory(new PropertyValueFactory<>("genero"));
-		paginas.setCellValueFactory(new PropertyValueFactory<>("paginas"));
-		
-		table.setItems(catalogo);
-		table.getColumns().addAll(titulo, isbn,autor,genero,paginas);
+
+		/*titulo.setCellValueFactory(cellData -> cellData.getValue().getTitulo());
+		isbn.setCellValueFactory(cellData -> cellData.getValue().getIsbn());
+		autor.setCellValueFactory(cellData -> cellData.getValue().getAutor());
+		genero.setCellValueFactory(cellData -> cellData.getValue().getGenero());
+		//paginas.setCellValueFactory(cellData -> cellData.getValue().getPaginas());*/
 	}
 
 	@FXML
 	private void nuevo(ActionEvent event) throws IOException {
+
 		Node source = (Node) event.getSource();
 		Stage parent = (Stage) source.getScene().getWindow();
 
+		titulo.setCellValueFactory(new PropertyValueFactory<Libro, String>("titulo"));
+		isbn.setCellValueFactory(new PropertyValueFactory<Libro, String>("isbn"));
+		autor.setCellValueFactory(new PropertyValueFactory<Libro, String>("autor"));
+		genero.setCellValueFactory(new PropertyValueFactory<Libro, Genero>("genero"));
+		paginas.setCellValueFactory(new PropertyValueFactory<Libro, Integer>("paginas"));
+		
+		table.getColumns().addAll(titulo, isbn, autor, genero,paginas);
+		
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../modal/NuevoFXML.fxml"));
 		Parent root1 = (Parent) fxmlLoader.load();
 		Stage dialog = new Stage();
@@ -63,6 +76,8 @@ public class ControllerMain {
 		dialog.initOwner(parent);
 		dialog.initModality(Modality.APPLICATION_MODAL);
 		dialog.showAndWait();
+
+		
 	}
 
 	@FXML
@@ -82,11 +97,9 @@ public class ControllerMain {
 
 	@FXML
 	private void cargar(ActionEvent event) throws IOException {
-		for(int i =0; i<catalogo.size()-1;i++) {
-			table.getItems().add(catalogo.get(i));
-		}
-		
-		
+		table.setItems(catalogo);
+		// table.getItems().addAll(catalogo);
+
 	}
 
 	public static ObservableList<Libro> getCatalogo() {
