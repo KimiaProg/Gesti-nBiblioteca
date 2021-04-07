@@ -21,6 +21,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import javafx.util.Callback;
 
 public class ControllerMain {
 
@@ -68,7 +69,7 @@ public class ControllerMain {
 		dialog.initOwner(parent);
 		dialog.initModality(Modality.APPLICATION_MODAL);
 		dialog.showAndWait();
-		// table.getItems().add(catalogo.get(catalogo.size()-1));
+		
 	}
 
 	@FXML
@@ -88,6 +89,7 @@ public class ControllerMain {
 
 	@FXML
 	private void cargar(ActionEvent event) throws IOException {
+		table.getItems().add(catalogo.get(catalogo.size()-1));
 	}
 
 	public static ObservableList<Libro> getCatalogo() {

@@ -6,62 +6,63 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Libro{
 
-	private SimpleStringProperty titulo;
-	private SimpleStringProperty isbn;
-	private SimpleObjectProperty<Genero> genero;
-	private SimpleStringProperty autor;
-	private SimpleIntegerProperty paginas;
+	private String titulo;
+	private String isbn;
+	private Genero genero;
+	private String autor;
+	private Integer paginas;
 
 	public Libro() {
 
 	}
 
 	public Libro(String titulo, String isbn, Genero genero, String autor, Integer paginas) {
-		this.titulo = new SimpleStringProperty(titulo);
-		this.autor = new SimpleStringProperty(autor);
-		this.isbn = new SimpleStringProperty(isbn);
-		this.genero = new SimpleObjectProperty<Genero>(genero);
-		this.paginas = new SimpleIntegerProperty(paginas);
+		this.titulo = titulo;
+		this.autor = autor;
+		this.isbn = isbn;
+		this.genero = genero;
+		this.paginas = paginas;
 	}
 
 
-	public SimpleStringProperty getTitulo() {
+
+	public String getTitulo() {
 		return titulo;
 	}
 
-	public void setTitulo(SimpleStringProperty titulo) {
+	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
 
-	public SimpleStringProperty getIsbn() {
+	public String getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(SimpleStringProperty isbn) {
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 
-	public SimpleObjectProperty<Genero> getGenero() {
+	public Genero getGenero() {
 		return genero;
 	}
 
-	public void setGenero(SimpleObjectProperty<Genero> genero) {
+	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
 
-	public SimpleStringProperty getAutor() {
+	public String getAutor() {
 		return autor;
 	}
 
-	public void setAutor(SimpleStringProperty autor) {
+	public void setAutor(String autor) {
 		this.autor = autor;
 	}
 
-	public SimpleIntegerProperty getPaginas() {
+	public Integer getPaginas() {
 		return paginas;
 	}
 
-	public void setPaginas(SimpleIntegerProperty paginas) {
+	public void setPaginas(Integer paginas) {
 		this.paginas = paginas;
 	}
 
