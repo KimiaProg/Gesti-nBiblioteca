@@ -18,10 +18,10 @@ public class Libro{
 
 	public Libro(String titulo, String isbn, Genero genero, String autor, Integer paginas) {
 		this.titulo = new SimpleStringProperty(titulo);
-		this.autor = new SimpleStringProperty(autor);;
-		this.isbn = new SimpleStringProperty(isbn);;
-		this.genero = new SimpleObjectProperty<Genero>(genero);;
-		this.paginas = new SimpleIntegerProperty(paginas);;
+		this.autor = new SimpleStringProperty(autor);
+		this.isbn = new SimpleStringProperty(isbn);
+		this.genero = new SimpleObjectProperty<Genero>(genero);
+		this.paginas = new SimpleIntegerProperty(paginas);
 	}
 
 

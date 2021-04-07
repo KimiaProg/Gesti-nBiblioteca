@@ -39,7 +39,6 @@ public class ControllerNuevo {
 	    Libro nuevoLibro= new Libro(titulo, isbn, genero, autor, paginas);
 	    stage.close();
 	    ControllerMain.getCatalogo().add(nuevoLibro);
-	    System.out.println(ControllerMain.getCatalogo().get(0).toString());
 	    
 	}
 	

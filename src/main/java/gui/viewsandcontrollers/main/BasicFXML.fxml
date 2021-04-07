@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="363.0" prefWidth="553.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.viewsandcontrollers.main.ControllerMain">
     <children>
-      <TableView editable="true" layoutY="82.0" prefHeight="239.0" prefWidth="553.0">
+      <TableView fx:id="table" editable="true" layoutY="82.0" prefHeight="239.0" prefWidth="553.0">
         <columns>
             <TableColumn fx:id="titulo" prefWidth="197.0" text="Título" />
             <TableColumn fx:id="isbn" prefWidth="77.0" text="ISBN" />
