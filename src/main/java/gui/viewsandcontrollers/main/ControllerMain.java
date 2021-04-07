@@ -48,6 +48,7 @@ public class ControllerMain {
 
 	@FXML
 	public void initialize() {
+
 		titulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
 		isbn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
 		autor.setCellValueFactory(new PropertyValueFactory<>("autor"));
@@ -69,17 +70,46 @@ public class ControllerMain {
 		dialog.initOwner(parent);
 		dialog.initModality(Modality.APPLICATION_MODAL);
 		dialog.showAndWait();
-		
+
+		table.getItems().add(catalogo.get(catalogo.size() - 1));
 	}
 
 	@FXML
 	private void editar(ActionEvent event) throws IOException {
+		Libro libroAEditar = table.getSelectionModel().getSelectedItem();
+		Node source = (Node) event.getSource();
+		Stage parent = (Stage) source.getScene().getWindow();
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../modal/NuevoFXML.fxml"));
+		Parent root1 = (Parent) fxmlLoader.load();
+		Stage dialog = new Stage();
+		dialog.setScene(new Scene(root1));
+		dialog.initOwner(parent);
+		dialog.initModality(Modality.APPLICATION_MODAL);
+		dialog.showAndWait();
+
+		/*int indiceOflibroEdit = catalogo.indexOf(libroAEditar);
+
+		catalogo.set(indiceOflibroEdit, catalogo.get(catalogo.size() - 1));
+
+		table.getItems().addAll(catalogo);
+
+		int tempIndex = indiceOflibroEdit;
+
+		while (tempIndex >= 0) {
+			table.getItems().remove(tempIndex);
+
+			tempIndex--;
+		}
+		
+		table.getItems().remove(indiceOflibroEdit+1);*/
+		
+		
 
 	}
 
 	@FXML
 	private void eliminar(ActionEvent event) throws IOException {
-
+		table.getItems().remove(table.getSelectionModel().getSelectedItem());
 	}
 
 	@FXML
@@ -89,7 +119,7 @@ public class ControllerMain {
 
 	@FXML
 	private void cargar(ActionEvent event) throws IOException {
-		table.getItems().add(catalogo.get(catalogo.size()-1));
+
 	}
 
 	public static ObservableList<Libro> getCatalogo() {

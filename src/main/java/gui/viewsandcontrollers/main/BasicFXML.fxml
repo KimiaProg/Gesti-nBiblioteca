@@ -24,8 +24,8 @@
          </font>
       </Text>
       <Button layoutX="82.0" layoutY="329.0" mnemonicParsing="false" onAction="#nuevo" text="Nuevo" />
-      <Button fx:id="botonEditar" disable="true" layoutX="152.0" layoutY="329.0" mnemonicParsing="false" onAction="#editar" text="Editar" />
-      <Button fx:id="botonEliminar" disable="true" layoutX="220.0" layoutY="329.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" />
+      <Button fx:id="botonEditar"  layoutX="152.0" layoutY="329.0" mnemonicParsing="false" onAction="#editar" text="Editar" />
+      <Button fx:id="botonEliminar" layoutX="220.0" layoutY="329.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" />
       <Button layoutX="299.0" layoutY="329.0" mnemonicParsing="false" onAction="#salvar" text="Salvar XML" />
       <Button layoutX="398.0" layoutY="329.0" mnemonicParsing="false" onAction="#cargar" text="Cargar XML" />
     </children>
