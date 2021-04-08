@@ -1,14 +1,14 @@
 package gui.viewsandcontrollers.modal;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import clasesBiblioteca.*;
-import gui.viewsandcontrollers.main.ControllerMain;;
+import negocio.Negocio;
+import negocio.model.Genero;
+import negocio.model.Libro;
 
 public class ControllerNuevo {
 
@@ -38,8 +38,7 @@ public class ControllerNuevo {
 	    int paginas = Integer.parseInt(textPaginas.getText());
 	    Libro nuevoLibro= new Libro(titulo, isbn, genero, autor, paginas);
 	    stage.close();
-	    ControllerMain.getCatalogo().add(nuevoLibro);
-	    
+	    Negocio.add(nuevoLibro);	    
 	}
 	
 	@FXML

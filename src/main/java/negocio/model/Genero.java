@@ -1,4 +1,4 @@
-package clasesBiblioteca;
+package negocio.model;
 
 
 import java.util.InputMismatchException;
