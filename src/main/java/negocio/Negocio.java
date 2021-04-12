@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import negocio.model.Libro;
+import negocio.model.negocioInterface;
 
-public class Negocio {
+public class Negocio implements negocioInterface {
 
 	private static List<Libro> catalogo = new ArrayList<>();
 	private static Negocio instance=null;

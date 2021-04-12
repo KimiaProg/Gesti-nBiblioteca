@@ -43,7 +43,7 @@ public class ControllerMain {
 	@FXML
 	TableColumn<Libro, Integer> paginas;
 
-	private Negocio negocio= Negocio.getInstance();
+	
 	@FXML
 	public void initialize() {
 		titulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
