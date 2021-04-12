@@ -43,6 +43,7 @@ public class ControllerMain {
 	@FXML
 	TableColumn<Libro, Integer> paginas;
 
+	private Negocio negocio= Negocio.getInstance();
 	@FXML
 	public void initialize() {
 		titulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
@@ -67,7 +68,7 @@ public class ControllerMain {
 		dialog.initModality(Modality.APPLICATION_MODAL);
 		dialog.showAndWait();
 
-		catalogo.add(Negocio.getCatalogoNegocio().get(Negocio.getCatalogoNegocio().size() - 1));
+		catalogo.add(negocio.getCatalogoNegocio().get(negocio.getCatalogoNegocio().size() - 1));
 		table.getItems().add(catalogo.get(catalogo.size() - 1));
 	}
 
@@ -84,24 +85,24 @@ public class ControllerMain {
 		dialog.initModality(Modality.APPLICATION_MODAL);
 		dialog.showAndWait();
 
-		Libro ultimo = Negocio.getCatalogoNegocio().get(Negocio.getCatalogoNegocio().size() - 1);
+		Libro ultimo = negocio.getCatalogoNegocio().get(negocio.getCatalogoNegocio().size() - 1);
 		int indiceOflibroEdit = catalogo.indexOf(libroAEditar);
 
-		Negocio.delete(ultimo);
-		Negocio.getCatalogoNegocio().set(indiceOflibroEdit, ultimo);
+		negocio.delete(ultimo);
+		negocio.getCatalogoNegocio().set(indiceOflibroEdit, ultimo);
 
 		table.getItems().removeAll(catalogo);
 		catalogo.removeAll(catalogo);
-		catalogo.addAll(Negocio.getCatalogoNegocio());
+		catalogo.addAll(negocio.getCatalogoNegocio());
 		table.getItems().addAll(catalogo);
 	}
 
 	@FXML
 	private void eliminar(ActionEvent event) throws IOException {
-		Negocio.delete(table.getSelectionModel().getSelectedItem());
+		negocio.delete(table.getSelectionModel().getSelectedItem());
 		table.getItems().removeAll(catalogo);
 		catalogo.removeAll(catalogo);
-		catalogo.addAll(Negocio.getCatalogoNegocio());
+		catalogo.addAll(negocio.getCatalogoNegocio());
 		table.getItems().addAll(catalogo);
 		// table.getItems().remove(table.getSelectionModel().getSelectedItem());
 	}

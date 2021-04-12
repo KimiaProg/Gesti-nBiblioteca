@@ -21,18 +21,18 @@ public class Negocio {
 		return instance;
 	}
 
-	public static List<Libro> getCatalogoNegocio() {
+	public List<Libro> getCatalogoNegocio() {
 		return catalogo;
 	}
 
-	public static void setCatalogoNegocio(List<Libro> catalogo) {
+	public void setCatalogoNegocio(List<Libro> catalogo) {
 		Negocio.catalogo = catalogo;
 	}
 	
-	public static void add(Libro libro) {
+	public void add(Libro libro) {
 		catalogo.add(libro);
 	}
-	public static void delete(Libro libro) {
+	public void delete(Libro libro) {
 		catalogo.remove(libro);
 	}
 

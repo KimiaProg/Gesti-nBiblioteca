@@ -37,7 +37,7 @@ public class ControllerNuevo {
 		int paginas = Integer.parseInt(textPaginas.getText());
 		Libro nuevoLibro = new Libro(titulo, isbn, genero, autor, paginas);
 		stage.close();
-		Negocio.add(nuevoLibro);
+		Negocio.getInstance().add(nuevoLibro);
 	}
 
 	@FXML
