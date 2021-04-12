@@ -22,46 +22,29 @@ public class ControllerNuevo {
 	TextField textGenero;
 	@FXML
 	TextField textPaginas;
-	
+
 	public void initialize() {
-		// TODO
 	}
 
 	@FXML
 	private void aceptarCerrarVentana(ActionEvent event) throws IOException {
 		Node source = (Node) event.getSource();
-	    Stage stage = (Stage) source.getScene().getWindow();
-	    String titulo = textTitulo.getText();
-	    String isbn = textISBN.getText();
-	    String autor = textAutor.getText();
-	    Genero genero = Genero.getGenero(textGenero.getText());
-	    int paginas = Integer.parseInt(textPaginas.getText());
-	    Libro nuevoLibro= new Libro(titulo, isbn, genero, autor, paginas);
-	    stage.close();
-	    Negocio.add(nuevoLibro);	    
+		Stage stage = (Stage) source.getScene().getWindow();
+		String titulo = textTitulo.getText();
+		String isbn = textISBN.getText();
+		String autor = textAutor.getText();
+		Genero genero = Genero.getGenero(textGenero.getText());
+		int paginas = Integer.parseInt(textPaginas.getText());
+		Libro nuevoLibro = new Libro(titulo, isbn, genero, autor, paginas);
+		stage.close();
+		Negocio.add(nuevoLibro);
 	}
-	
+
 	@FXML
 	private void cancelar(ActionEvent event) throws IOException {
 		Node source = (Node) event.getSource();
-	    Stage stage = (Stage) source.getScene().getWindow();
-	    stage.close();
+		Stage stage = (Stage) source.getScene().getWindow();
+		stage.close();
 	}
 
-	
-	
-	
-	
-	
-	/*
-	 * if (table != null) {
-			if (table.getSelectionModel().getSelectedItem() != null) {
-				botonEliminar.setDisable(false);
-				botonEditar.setDisable(false);
-			} else {
-				botonEliminar.setDisable(true);
-				botonEditar.setDisable(true);
-			}
-		}*/
-	 
 }

@@ -45,17 +45,14 @@ public class ControllerMain {
 
 	@FXML
 	public void initialize() {
-
 		titulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
 		isbn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
 		autor.setCellValueFactory(new PropertyValueFactory<>("autor"));
 		genero.setCellValueFactory(new PropertyValueFactory<>("genero"));
 		paginas.setCellValueFactory(new PropertyValueFactory<>("paginas"));
-		
+
 		botonEditar.disableProperty().bind(table.getSelectionModel().selectedItemProperty().isNull());
 		botonEliminar.disableProperty().bind(table.getSelectionModel().selectedItemProperty().isNull());
-		
-
 	}
 
 	@FXML
@@ -70,10 +67,9 @@ public class ControllerMain {
 		dialog.initModality(Modality.APPLICATION_MODAL);
 		dialog.showAndWait();
 
-		catalogo.add(Negocio.getCatalogoNegocio().get(Negocio.getCatalogoNegocio().size()-1));
+		catalogo.add(Negocio.getCatalogoNegocio().get(Negocio.getCatalogoNegocio().size() - 1));
 		table.getItems().add(catalogo.get(catalogo.size() - 1));
 	}
-	
 
 	@FXML
 	private void editar(ActionEvent event) throws IOException {
@@ -88,32 +84,16 @@ public class ControllerMain {
 		dialog.initModality(Modality.APPLICATION_MODAL);
 		dialog.showAndWait();
 
+		Libro ultimo = Negocio.getCatalogoNegocio().get(Negocio.getCatalogoNegocio().size() - 1);
 		int indiceOflibroEdit = catalogo.indexOf(libroAEditar);
 
-		Libro ultimo= catalogo.get(catalogo.size()-1);
-		catalogo.remove(catalogo.size()-1);
-		catalogo.set(indiceOflibroEdit,ultimo);
-		
-		//catalogo.remove(indiceOflibroEdit+1);
-		
+		Negocio.delete(ultimo);
+		Negocio.getCatalogoNegocio().set(indiceOflibroEdit, ultimo);
+
 		table.getItems().removeAll(catalogo);
-		for(Libro lib: catalogo) {
-			System.out.println(lib.toString());
-		}
+		catalogo.removeAll(catalogo);
+		catalogo.addAll(Negocio.getCatalogoNegocio());
 		table.getItems().addAll(catalogo);
-
-		/*int tempIndex = indiceOflibroEdit;
-
-		while (tempIndex >= 0) {
-			table.getItems().remove(tempIndex);
-
-			tempIndex--;
-		}
-		
-		table.getItems().remove(indiceOflibroEdit+1);*/
-		
-		
-
 	}
 
 	@FXML
@@ -123,7 +103,7 @@ public class ControllerMain {
 		catalogo.removeAll(catalogo);
 		catalogo.addAll(Negocio.getCatalogoNegocio());
 		table.getItems().addAll(catalogo);
-		//table.getItems().remove(table.getSelectionModel().getSelectedItem());
+		// table.getItems().remove(table.getSelectionModel().getSelectedItem());
 	}
 
 	@FXML
