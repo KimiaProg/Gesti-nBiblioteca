@@ -2,6 +2,7 @@ package gui.viewsandcontrollers.main;
 
 import java.io.IOException;
 
+import gui.viewandcontrollers.form.viewmodel.LibroViewModel;
 import negocio.Negocio;
 import negocio.model.*;
 import negocio.model.Libro;
@@ -68,8 +69,8 @@ public class ControllerMain {
 		dialog.initModality(Modality.APPLICATION_MODAL);
 		dialog.showAndWait();
 
-		catalogo.add(negocio.getCatalogoNegocio().get(negocio.getCatalogoNegocio().size() - 1));
-		table.getItems().add(catalogo.get(catalogo.size() - 1));
+		/*catalogo.add(negocio.getCatalogoNegocio().get(negocio.getCatalogoNegocio().size() - 1));
+		table.getItems().add(catalogo.get(catalogo.size() - 1));*/
 	}
 
 	@FXML
@@ -85,7 +86,7 @@ public class ControllerMain {
 		dialog.initModality(Modality.APPLICATION_MODAL);
 		dialog.showAndWait();
 
-		Libro ultimo = negocio.getCatalogoNegocio().get(negocio.getCatalogoNegocio().size() - 1);
+		/*Libro ultimo = negocio.getCatalogoNegocio().get(negocio.getCatalogoNegocio().size() - 1);
 		int indiceOflibroEdit = catalogo.indexOf(libroAEditar);
 
 		negocio.delete(ultimo);
@@ -94,16 +95,16 @@ public class ControllerMain {
 		table.getItems().removeAll(catalogo);
 		catalogo.removeAll(catalogo);
 		catalogo.addAll(negocio.getCatalogoNegocio());
-		table.getItems().addAll(catalogo);
+		table.getItems().addAll(catalogo);*/
 	}
 
 	@FXML
 	private void eliminar(ActionEvent event) throws IOException {
-		negocio.delete(table.getSelectionModel().getSelectedItem());
+		/*negocio.delete(table.getSelectionModel().getSelectedItem());
 		table.getItems().removeAll(catalogo);
 		catalogo.removeAll(catalogo);
 		catalogo.addAll(negocio.getCatalogoNegocio());
-		table.getItems().addAll(catalogo);
+		table.getItems().addAll(catalogo);*/
 		// table.getItems().remove(table.getSelectionModel().getSelectedItem());
 	}
 
