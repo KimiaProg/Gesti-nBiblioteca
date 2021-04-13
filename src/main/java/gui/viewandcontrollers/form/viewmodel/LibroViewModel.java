@@ -2,7 +2,12 @@ package gui.viewandcontrollers.form.viewmodel;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.Property;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.util.Pair;
 import negocio.Negocio;
 import negocio.model.Genero;
 
@@ -10,24 +15,23 @@ public class LibroViewModel {
 
 	private Negocio negocio = Negocio.getInstance();
 
-	private StringProperty titulo;
-	private StringProperty isbn;
-	private ObjectProperty<Genero> genero;
-	private StringProperty autor;
-	private IntegerProperty paginas;
+	private final StringProperty titulo= new SimpleStringProperty();
+	private final StringProperty isbn= new SimpleStringProperty();
+	private final ObjectProperty<Pair<String, String>> genero = new SimpleObjectProperty();
+	private final StringProperty autor= new SimpleStringProperty();
+	private final IntegerProperty paginas = new SimpleIntegerProperty();
 
 	public LibroViewModel() {
 
 	}
 
-	public LibroViewModel(StringProperty titulo, StringProperty isbn, ObjectProperty<Genero> genero,
-			StringProperty autor, IntegerProperty paginas) {
-		super();
-		this.titulo = titulo;
-		this.isbn = isbn;
-		this.genero = genero;
-		this.autor = autor;
-		this.paginas = paginas;
+	public LibroViewModel(String titulo, String isbn, String genero,
+			String autor, Integer paginas) {
+		setAutor(titulo);
+		setIsbn(isbn);
+		setGenero(new Pair<String, String>(genero,genero));
+		setAutor(autor);
+		setPaginas(paginas);
 	}
 
 	public StringProperty getTitulo() {
@@ -46,11 +50,11 @@ public class LibroViewModel {
 		this.isbn.set(isbn);
 	}
 
-	public ObjectProperty<Genero> getGenero() {
-		return genero;
+	public ObjectProperty<Pair<String, String>> getGenero() {
+		return (ObjectProperty<Pair<String, String>>) genero;
 	}
 
-	public void setGenero(Genero genero) {
+	public void setGenero(Pair<String, String> genero) {
 		this.genero.set(genero);
 	}
 
@@ -78,12 +82,13 @@ public class LibroViewModel {
 
 	public boolean create() {
 		negocio.add(LibroConverter.toLibro(this));
-		return false;
+		return true;
 
 	}
 
 	public boolean update() {
-		return false;
+		negocio.update(LibroConverter.toLibro(this));
+		return true;
 
 	}
 

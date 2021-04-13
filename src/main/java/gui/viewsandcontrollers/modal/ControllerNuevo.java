@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import gui.viewandcontrollers.form.viewmodel.LibroConverter;
 import gui.viewandcontrollers.form.viewmodel.LibroViewModel;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
@@ -15,7 +16,6 @@ import javafx.stage.Stage;
 import javafx.util.Pair;
 import javafx.util.StringConverter;
 import javafx.util.converter.NumberStringConverter;
-import negocio.Negocio;
 import negocio.model.Genero;
 import negocio.model.Libro;
 
@@ -32,6 +32,17 @@ public class ControllerNuevo {
 	TextField textAutor;
 	@FXML
 	TextField textPaginas;
+
+	boolean nuevo;
+
+	public ControllerNuevo() {
+		nuevo = true;
+	}
+
+	public ControllerNuevo(Libro libro) {
+		nuevo = false;
+		viewModel = LibroConverter.toLibroViewModel(libro);
+	}
 
 	public void initialize() {
 
@@ -58,15 +69,20 @@ public class ControllerNuevo {
 		textTitulo.textProperty().bindBidirectional(viewModel.getTitulo());
 		textISBN.textProperty().bindBidirectional(viewModel.getIsbn());
 		textAutor.textProperty().bindBidirectional(viewModel.getAutor());
-		/*comboGen.valueProperty().bindBidirectional(viewModel.getGenero());
-		Bindings.bindBidirectional(textPaginas.textProperty(), viewModel.getPaginas(), new NumberStringConverter());*/
+		comboGen.valueProperty().bindBidirectional(viewModel.getGenero());
+		Bindings.bindBidirectional(textPaginas.textProperty(), viewModel.getPaginas(), new NumberStringConverter());
 	}
 
 	@FXML
 	private void aceptarCerrarVentana(ActionEvent event) throws IOException {
 		Node source = (Node) event.getSource();
 		Stage stage = (Stage) source.getScene().getWindow();
-		viewModel.create();
+
+		if (nuevo) {
+			viewModel.create();
+		} else {
+			viewModel.update();
+		}
 		stage.close();
 
 	}

@@ -9,15 +9,15 @@ import negocio.model.negocioInterface;
 public class Negocio implements negocioInterface {
 
 	private static List<Libro> catalogo = new ArrayList<>();
-	private static Negocio instance=null;
-	
+	private static Negocio instance = null;
+
 	private Negocio() {
-		
+
 	}
-	
+
 	public static Negocio getInstance() {
-		if(instance==null) {
-			instance=new Negocio();
+		if (instance == null) {
+			instance = new Negocio();
 		}
 		return instance;
 	}
@@ -29,12 +29,20 @@ public class Negocio implements negocioInterface {
 	public void setCatalogoNegocio(List<Libro> catalogo) {
 		Negocio.catalogo = catalogo;
 	}
-	
+
 	public void add(Libro libro) {
 		catalogo.add(libro);
 	}
+
 	public void delete(Libro libro) {
 		catalogo.remove(libro);
+	}
+
+	@Override
+	public void update(Libro libro) {
+		int pos = catalogo.indexOf(libro);
+		catalogo.set(pos, libro);
+
 	}
 
 }

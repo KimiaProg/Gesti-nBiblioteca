@@ -1,8 +1,5 @@
 package gui.viewandcontrollers.form.viewmodel;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
 import negocio.model.Genero;
 import negocio.model.Libro;
 
@@ -15,8 +12,6 @@ public class LibroConverter {
 	}
 
 	public static LibroViewModel toLibroViewModel(Libro libro) {
-		return new LibroViewModel(new SimpleStringProperty(libro.getTitulo()),
-				new SimpleStringProperty(libro.getIsbn()), new SimpleObjectProperty<Genero>(libro.getGenero()),
-				new SimpleStringProperty(libro.getAutor()), new SimpleIntegerProperty(libro.getPaginas()));
+		return new LibroViewModel(libro.getTitulo(),libro.getIsbn(),libro.getGenero().toString(),libro.getAutor(),libro.getPaginas());
 	}
 }

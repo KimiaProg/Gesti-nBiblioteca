@@ -2,7 +2,6 @@ package gui.viewsandcontrollers.main;
 
 import java.io.IOException;
 
-import gui.viewandcontrollers.form.viewmodel.LibroViewModel;
 import negocio.Negocio;
 import negocio.model.*;
 import negocio.model.Libro;
@@ -23,8 +22,9 @@ import javafx.stage.Stage;
 
 public class ControllerMain {
 
-	private static ObservableList<Libro> catalogo = FXCollections.observableArrayList();
+	private static ObservableList<Libro> catalogo;
 
+	private Negocio negocio= Negocio.getInstance();
 	@FXML
 	TableView<Libro> table;
 
@@ -53,24 +53,17 @@ public class ControllerMain {
 		genero.setCellValueFactory(new PropertyValueFactory<>("genero"));
 		paginas.setCellValueFactory(new PropertyValueFactory<>("paginas"));
 
+		catalogo= FXCollections.observableArrayList(negocio.getCatalogoNegocio());
+		table.setItems(catalogo);
+		
 		botonEditar.disableProperty().bind(table.getSelectionModel().selectedItemProperty().isNull());
 		botonEliminar.disableProperty().bind(table.getSelectionModel().selectedItemProperty().isNull());
 	}
 
 	@FXML
 	private void nuevo(ActionEvent event) throws IOException {
-		Node source = (Node) event.getSource();
-		Stage parent = (Stage) source.getScene().getWindow();
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../modal/NuevoFXML.fxml"));
-		Parent root1 = (Parent) fxmlLoader.load();
-		Stage dialog = new Stage();
-		dialog.setScene(new Scene(root1));
-		dialog.initOwner(parent);
-		dialog.initModality(Modality.APPLICATION_MODAL);
-		dialog.showAndWait();
-
-		/*catalogo.add(negocio.getCatalogoNegocio().get(negocio.getCatalogoNegocio().size() - 1));
-		table.getItems().add(catalogo.get(catalogo.size() - 1));*/
+		formLibro(event,null);
+		
 	}
 
 	@FXML
@@ -96,6 +89,19 @@ public class ControllerMain {
 		catalogo.removeAll(catalogo);
 		catalogo.addAll(negocio.getCatalogoNegocio());
 		table.getItems().addAll(catalogo);*/
+	}
+	
+	private void formLibro(ActionEvent event,Libro libro) throws IOException {
+		Node source = (Node) event.getSource();
+		Stage parent = (Stage) source.getScene().getWindow();
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../modal/NuevoFXML.fxml"));
+		Parent root1 = (Parent) fxmlLoader.load();
+		Stage dialog = new Stage();
+		dialog.setScene(new Scene(root1));
+		dialog.initOwner(parent);
+		dialog.initModality(Modality.APPLICATION_MODAL);
+		dialog.showAndWait();
+
 	}
 
 	@FXML
