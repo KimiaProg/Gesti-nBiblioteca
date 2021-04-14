@@ -6,6 +6,7 @@ import java.util.List;
 
 import gui.viewandcontrollers.form.viewmodel.LibroConverter;
 import gui.viewandcontrollers.form.viewmodel.LibroViewModel;
+import gui.viewandcontrollers.form.viewmodel.Notifications;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,6 +34,17 @@ public class ControllerNuevo {
 	@FXML
 	TextField textPaginas;
 
+	
+	boolean nuevo;
+
+	public ControllerNuevo() {
+		nuevo = true;
+	}
+
+	public ControllerNuevo(Libro libro) {
+		nuevo = false;
+		viewModel = LibroConverter.toLibroViewModel(libro);
+	}
 	
 	public void initialize() {
 
@@ -68,9 +80,18 @@ public class ControllerNuevo {
 		Node source = (Node) event.getSource();
 		Stage stage = (Stage) source.getScene().getWindow();
 
-		viewModel.create();
+		boolean isDone;
+		if (nuevo) {
+			isDone=viewModel.create();
+		} else {
+			isDone=viewModel.update();
+		}
 
-		stage.close();
+		if(isDone) {
+			stage.close();
+			Notifications.publish(Notifications.CATALOGO_UPDATED);
+		}
+		
 
 	}
 

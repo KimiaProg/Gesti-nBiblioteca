@@ -6,8 +6,8 @@ import negocio.model.Libro;
 public class LibroConverter {
 
 	public static Libro toLibro(LibroViewModel viewModelLibro) {
-		return new Libro(viewModelLibro.getTitulo().toString(), viewModelLibro.getIsbn().toString(),
-				Genero.getGenero(viewModelLibro.getGenero().get()), viewModelLibro.getAutor().toString(),
+		return new Libro(viewModelLibro.getTitulo().getValue(), viewModelLibro.getIsbn().getValue(),
+				Genero.getGenero(viewModelLibro.getGenero().getValue()), viewModelLibro.getAutor().getValue(),
 				viewModelLibro.getPaginas().getValue());
 	}
 

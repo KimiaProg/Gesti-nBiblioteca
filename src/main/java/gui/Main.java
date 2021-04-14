@@ -25,24 +25,4 @@ public class Main extends Application {
         launch();
     }
      
-    /*
-     * Stage stage = new Stage();
-		
-	
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../modal/NuevoFXML.fxml"));
-		
-		/*ControllerNuevo nuevo;
-		if(libro==null) {
-			nuevo= new ControllerNuevo();
-		}else {
-			nuevo= new ControllerNuevo(libro);
-		}
-		
-		fxmlLoader.setController(nuevo);
-		Parent root1 = fxmlLoader.load();
-		stage.setScene(new Scene(root1));
-		stage.initModality(Modality.WINDOW_MODAL);
-		stage.initOwner(((Node) event.getSource()).getScene().getWindow());
-		stage.showAndWait();
-     */
 }

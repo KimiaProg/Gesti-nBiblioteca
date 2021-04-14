@@ -40,9 +40,13 @@ public class Negocio implements NegocioInterface {
 
 	@Override
 	public void update(Libro libro) {
-		int pos = catalogo.indexOf(libro);
-		catalogo.set(pos, libro);
-
+		for(Libro l: catalogo) {
+			if(l.getIsbn()== libro.getIsbn()) {
+				int pos = catalogo.indexOf(l);
+				catalogo.set(pos, libro);
+			}
+		}
+		
 	}
 
 }
