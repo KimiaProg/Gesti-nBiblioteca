@@ -7,7 +7,7 @@ public class LibroConverter {
 
 	public static Libro toLibro(LibroViewModel viewModelLibro) {
 		return new Libro(viewModelLibro.getTitulo().toString(), viewModelLibro.getIsbn().toString(),
-				Genero.getGenero(viewModelLibro.getGenero().toString()), viewModelLibro.getAutor().toString(),
+				Genero.getGenero(viewModelLibro.getGenero().get()), viewModelLibro.getAutor().toString(),
 				viewModelLibro.getPaginas().getValue());
 	}
 

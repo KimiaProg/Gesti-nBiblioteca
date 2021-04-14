@@ -25,6 +25,7 @@ public class ControllerMain {
 	private static ObservableList<Libro> catalogo;
 
 	private Negocio negocio= Negocio.getInstance();
+	
 	@FXML
 	TableView<Libro> table;
 
@@ -62,8 +63,15 @@ public class ControllerMain {
 
 	@FXML
 	private void nuevo(ActionEvent event) throws IOException {
-		formLibro(event,null);
-		
+		Node source = (Node) event.getSource();
+		Stage parent = (Stage) source.getScene().getWindow();
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../modal/NuevoFXML.fxml"));
+		Parent root1 = (Parent) fxmlLoader.load();
+		Stage dialog = new Stage();
+		dialog.setScene(new Scene(root1));
+		dialog.initOwner(parent);
+		dialog.initModality(Modality.APPLICATION_MODAL);
+		dialog.showAndWait();
 	}
 
 	@FXML
@@ -91,18 +99,6 @@ public class ControllerMain {
 		table.getItems().addAll(catalogo);*/
 	}
 	
-	private void formLibro(ActionEvent event,Libro libro) throws IOException {
-		Node source = (Node) event.getSource();
-		Stage parent = (Stage) source.getScene().getWindow();
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../modal/NuevoFXML.fxml"));
-		Parent root1 = (Parent) fxmlLoader.load();
-		Stage dialog = new Stage();
-		dialog.setScene(new Scene(root1));
-		dialog.initOwner(parent);
-		dialog.initModality(Modality.APPLICATION_MODAL);
-		dialog.showAndWait();
-
-	}
 
 	@FXML
 	private void eliminar(ActionEvent event) throws IOException {

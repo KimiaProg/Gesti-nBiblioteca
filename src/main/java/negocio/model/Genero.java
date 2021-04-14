@@ -3,13 +3,15 @@ package negocio.model;
 
 import java.util.InputMismatchException;
 
+import javafx.util.Pair;
+
 public enum Genero {
 	NOVELA, POESIA, FICCION;
 
-	public static Genero getGenero(String genero) {
+	public static Genero getGenero(Pair<String, String> pair) {
 		Genero seleccionado = null;
 
-		switch (genero.toUpperCase()) {
+		switch (pair.getValue()) {
 		case "NOVELA":
 			seleccionado = Genero.NOVELA;
 			break;

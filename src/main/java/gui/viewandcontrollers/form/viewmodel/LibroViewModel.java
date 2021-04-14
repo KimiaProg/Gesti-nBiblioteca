@@ -23,6 +23,7 @@ public class LibroViewModel {
 
 	public LibroViewModel() {
 
+		setGenero(new Pair(Genero.FICCION.toString(), Genero.FICCION.toString()));
 	}
 
 	public LibroViewModel(String titulo, String isbn, String genero,

@@ -2,7 +2,7 @@ package negocio.model;
 
 import java.util.List;
 
-public interface negocioInterface {
+public interface NegocioInterface {
 
 	public List<Libro> getCatalogoNegocio();
 

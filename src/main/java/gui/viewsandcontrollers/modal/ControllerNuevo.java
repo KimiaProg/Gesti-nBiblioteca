@@ -33,17 +33,7 @@ public class ControllerNuevo {
 	@FXML
 	TextField textPaginas;
 
-	boolean nuevo;
-
-	public ControllerNuevo() {
-		nuevo = true;
-	}
-
-	public ControllerNuevo(Libro libro) {
-		nuevo = false;
-		viewModel = LibroConverter.toLibroViewModel(libro);
-	}
-
+	
 	public void initialize() {
 
 		List<Pair<String, String>> opcionesChoiceBox = new ArrayList<>();
@@ -78,11 +68,8 @@ public class ControllerNuevo {
 		Node source = (Node) event.getSource();
 		Stage stage = (Stage) source.getScene().getWindow();
 
-		if (nuevo) {
-			viewModel.create();
-		} else {
-			viewModel.update();
-		}
+		viewModel.create();
+
 		stage.close();
 
 	}
