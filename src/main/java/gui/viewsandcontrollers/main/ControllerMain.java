@@ -50,6 +50,9 @@ public class ControllerMain {
 	@FXML
 	TableColumn<Libro, Integer> paginas;
 
+	/**
+	 * Inicializa el controlador
+	 */
 	@FXML
 	public void initialize() {
 		titulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
@@ -64,11 +67,24 @@ public class ControllerMain {
 		Notifications.subscribe(Notifications.CATALOGO_UPDATED, this, this::update);
 	}
 
+	/**
+	 * Crea un nuevo libro
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	private void nuevo(ActionEvent event) throws IOException {
 		formLibro(event, null);
 	}
 
+	/**
+	 * Abre el formulario libro
+	 * 
+	 * @param event
+	 * @param libro
+	 * @throws IOException
+	 */
 	private void formLibro(ActionEvent event, Libro libro) throws IOException {
 		Stage stage = new Stage();
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../modal/NuevoFXML.fxml"));
@@ -85,60 +101,77 @@ public class ControllerMain {
 		stage.initModality(Modality.WINDOW_MODAL);
 		stage.initOwner(((Node) event.getSource()).getScene().getWindow());
 		stage.showAndWait();
-
 	}
 
+	/**
+	 * Edita un libro existente en el catalogo
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	private void editar(ActionEvent event) throws IOException {
 		Libro libroAEditar = table.getSelectionModel().getSelectedItem();
-		formLibro(event,libroAEditar);
-
-		/*
-		 * Libro ultimo =
-		 * negocio.getCatalogoNegocio().get(negocio.getCatalogoNegocio().size() - 1);
-		 * int indiceOflibroEdit = catalogo.indexOf(libroAEditar);
-		 * 
-		 * negocio.delete(ultimo); negocio.getCatalogoNegocio().set(indiceOflibroEdit,
-		 * ultimo);
-		 * 
-		 * table.getItems().removeAll(catalogo); catalogo.removeAll(catalogo);
-		 * catalogo.addAll(negocio.getCatalogoNegocio());
-		 * table.getItems().addAll(catalogo);
-		 */
+		formLibro(event, libroAEditar);
 	}
 
+	/**
+	 * Elimina el elemento seleccionado
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	private void eliminar(ActionEvent event) throws IOException {
-		Alert warning= new Alert(Alert.AlertType.CONFIRMATION);
-		
-		//warning.setHeaderText("Está seguro de eliminar este registro?");
+		Alert warning = new Alert(Alert.AlertType.CONFIRMATION);
 		warning.setTitle("Warning");
 		warning.setContentText("Está seguro de eliminar este registro?");
-		
-		Optional<ButtonType> botonRes=  warning.showAndWait();
-		
-		if(botonRes.get()== ButtonType.OK) {
+
+		Optional<ButtonType> botonRes = warning.showAndWait();
+
+		if (botonRes.get() == ButtonType.OK) {
 			negocio.delete(table.getSelectionModel().getSelectedItem());
 			update(Notifications.CATALOGO_UPDATED);
 		}
 	}
 
+	/**
+	 * Guarda los elementos de la tabla en un fichero xml
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	private void salvar(ActionEvent event) throws IOException {
 
 	}
 
+	/**
+	 * Carga los elementos del fichero xml en la tabla
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	private void cargar(ActionEvent event) throws IOException {
 
 	}
 
+	/**
+	 * Actualiza los elementos de la tabla con el catalogo
+	 * 
+	 * @param event
+	 */
 	private void update(String event) {
 		catalogo = FXCollections.observableArrayList(negocio.getCatalogoNegocio());
 		table.setItems(catalogo);
 		table.refresh();
 	}
 
+	/**
+	 * 
+	 * @return Devuelve la lista observable
+	 */
 	public static ObservableList<Libro> getCatalogo() {
 		return catalogo;
 	}

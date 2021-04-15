@@ -44,6 +44,7 @@ public class ControllerNuevo {
 	public ControllerNuevo(Libro libro) {
 		nuevo = false;
 		viewModel = LibroConverter.toLibroViewModel(libro);
+		
 	}
 	
 	public void initialize() {
@@ -73,6 +74,10 @@ public class ControllerNuevo {
 		textAutor.textProperty().bindBidirectional(viewModel.getAutor());
 		comboGen.valueProperty().bindBidirectional(viewModel.getGenero());
 		Bindings.bindBidirectional(textPaginas.textProperty(), viewModel.getPaginas(), new NumberStringConverter());
+		
+		if(!nuevo) {
+			textISBN.setEditable(false);
+		}
 	}
 
 	@FXML
@@ -86,13 +91,11 @@ public class ControllerNuevo {
 		} else {
 			isDone=viewModel.update();
 		}
-
+		
+		stage.close(); 
 		if(isDone) {
-			stage.close();
 			Notifications.publish(Notifications.CATALOGO_UPDATED);
 		}
-		
-
 	}
 
 	@FXML

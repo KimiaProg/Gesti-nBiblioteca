@@ -22,13 +22,12 @@ public class LibroViewModel {
 	private final IntegerProperty paginas = new SimpleIntegerProperty();
 
 	public LibroViewModel() {
-
 		setGenero(new Pair(Genero.FICCION.toString(), Genero.FICCION.toString()));
 	}
 
 	public LibroViewModel(String titulo, String isbn, String genero,
 			String autor, Integer paginas) {
-		setAutor(titulo);
+		setTitulo(titulo);
 		setIsbn(isbn);
 		setGenero(new Pair<String, String>(genero,genero));
 		setAutor(autor);
@@ -82,15 +81,11 @@ public class LibroViewModel {
 	}
 
 	public boolean create() {
-		negocio.add(LibroConverter.toLibro(this));
-		return true;
-
+		return negocio.add(LibroConverter.toLibro(this));
 	}
 
 	public boolean update() {
-		negocio.update(LibroConverter.toLibro(this));
-		return true;
-
+		return negocio.update(LibroConverter.toLibro(this));
 	}
 
 }
