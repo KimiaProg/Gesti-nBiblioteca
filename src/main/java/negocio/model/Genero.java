@@ -26,4 +26,23 @@ public enum Genero {
 		}
 		return seleccionado;
 	}
+
+	public static Genero getGenero(String string) {
+		Genero seleccionado = null;
+
+		switch (string.toUpperCase()) {
+		case "NOVELA":
+			seleccionado = Genero.NOVELA;
+			break;
+		case "POESIA":
+			seleccionado = Genero.POESIA;
+			break;
+		case "FICCION":
+			seleccionado = Genero.FICCION;
+			break;
+		default:
+			throw new InputMismatchException("¡No existe el género introducido en esta libreria!");
+		}
+		return seleccionado;
+	}
 }

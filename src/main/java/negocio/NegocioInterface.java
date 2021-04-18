@@ -32,4 +32,8 @@ public interface NegocioInterface {
 	 * @return
 	 */
 	public boolean update(Libro libro);
+	
+	public boolean save(String fichero);
+	
+	public boolean load(String fichero);
 }

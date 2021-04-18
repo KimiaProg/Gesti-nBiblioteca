@@ -21,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -143,7 +144,14 @@ public class ControllerMain {
 	 */
 	@FXML
 	private void salvar(ActionEvent event) throws IOException {
-
+		TextInputDialog ventana= new TextInputDialog();
+		ventana.setTitle("Salvar");
+		ventana.setContentText("Porfavor introduce el fichero");
+		Optional<String> resul = ventana.showAndWait();
+		if(resul.isPresent()) {
+			negocio.save(resul.get());
+			update(Notifications.CATALOGO_UPDATED);
+		}
 	}
 
 	/**
@@ -154,7 +162,15 @@ public class ControllerMain {
 	 */
 	@FXML
 	private void cargar(ActionEvent event) throws IOException {
-
+		TextInputDialog ventana= new TextInputDialog();
+		ventana.setTitle("Cargar");
+		ventana.setContentText("Porfavor introduce el fichero");
+		Optional<String> resul = ventana.showAndWait();
+		if(resul.isPresent()) {
+			negocio.load(resul.get());
+			update(Notifications.CATALOGO_UPDATED);
+		}
+		
 	}
 
 	/**
