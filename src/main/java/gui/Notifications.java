@@ -1,4 +1,4 @@
-package gui.viewandcontrollers.form.viewmodel;
+package gui;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

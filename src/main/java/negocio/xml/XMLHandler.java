@@ -17,7 +17,6 @@ public class XMLHandler extends DefaultHandler {
 	public void characters(char[] ch, int start, int length) throws SAXException {
 		super.characters(ch, start, length);
 		myStringB.append(new String(ch, start, length));
-
 	}
 
 	@Override

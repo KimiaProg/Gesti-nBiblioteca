@@ -1,4 +1,4 @@
-package gui.viewandcontrollers.form.viewmodel;
+package gui.viewsandcontrollers.form.viewmodel;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;

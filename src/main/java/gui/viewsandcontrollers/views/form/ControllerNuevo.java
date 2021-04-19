@@ -1,12 +1,12 @@
-package gui.viewsandcontrollers.modal;
+package gui.viewsandcontrollers.views.form;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import gui.viewandcontrollers.form.viewmodel.LibroConverter;
-import gui.viewandcontrollers.form.viewmodel.LibroViewModel;
-import gui.viewandcontrollers.form.viewmodel.Notifications;
+import gui.Notifications;
+import gui.viewsandcontrollers.form.viewmodel.LibroConverter;
+import gui.viewsandcontrollers.form.viewmodel.LibroViewModel;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

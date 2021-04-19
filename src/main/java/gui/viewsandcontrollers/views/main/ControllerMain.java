@@ -1,10 +1,10 @@
-package gui.viewsandcontrollers.main;
+package gui.viewsandcontrollers.views.main;
 
 import java.io.IOException;
 import java.util.Optional;
 
-import gui.viewandcontrollers.form.viewmodel.Notifications;
-import gui.viewsandcontrollers.modal.ControllerNuevo;
+import gui.Notifications;
+import gui.viewsandcontrollers.views.form.ControllerNuevo;
 import negocio.Negocio;
 import negocio.model.*;
 import negocio.model.Libro;
