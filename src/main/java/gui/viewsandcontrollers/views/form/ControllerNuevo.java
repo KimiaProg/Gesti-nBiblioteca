@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gui.Notifications;
-import gui.viewsandcontrollers.form.viewmodel.LibroConverter;
-import gui.viewsandcontrollers.form.viewmodel.LibroViewModel;
+import gui.viewsandcontrollers.viewmodel.LibroConverter;
+import gui.viewsandcontrollers.viewmodel.LibroViewModel;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

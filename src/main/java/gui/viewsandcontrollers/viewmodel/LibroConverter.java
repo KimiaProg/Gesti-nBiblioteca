@@ -1,4 +1,4 @@
-package gui.viewsandcontrollers.form.viewmodel;
+package gui.viewsandcontrollers.viewmodel;
 
 import negocio.model.Genero;
 import negocio.model.Libro;

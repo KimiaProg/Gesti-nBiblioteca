@@ -33,7 +33,17 @@ public interface NegocioInterface {
 	 */
 	public boolean update(Libro libro);
 	
+	/**
+	 * 
+	 * @param fichero
+	 * @return
+	 */
 	public boolean save(String fichero);
 	
+	/**
+	 * 
+	 * @param fichero
+	 * @return
+	 */
 	public boolean load(String fichero);
 }

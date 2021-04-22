@@ -88,7 +88,7 @@ public class ControllerMain {
 	 */
 	private void formLibro(ActionEvent event, Libro libro) throws IOException {
 		Stage stage = new Stage();
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../modal/NuevoFXML.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../form/NuevoFXML.fxml"));
 
 		ControllerNuevo nuevo;
 		if (libro == null) {
